@@ -20,4 +20,4 @@ tests:
       echo "firefox bin was not the correct size"
       exit 3;
     fi
-    
+  - set -o errexit -o pipefail; git lfs ls-files | grep firefox-52.0.tar.bz2
