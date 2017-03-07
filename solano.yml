@@ -1,0 +1,23 @@
+# Solano CI test repository for git lfs compatibility
+hooks:
+  pre_setup: git lfs checkout
+tests:
+  - |
+    echo "Testing lfs file and size"
+    set -o errexit -o pipefail
+    if [ ! -f $TDDIUM_REPO_ROOT/firefox-52.0.tar.bz2 ]; then 
+      echo "Firefox 52 packagge not found"
+      exit 1
+    fi
+    byte_size=`stat --format=%s firefox-52.0.tar.bz2`
+    if [[ "$byte_size" != "57730709" ]]; then
+      echo "firefox package was not the correct size"
+      exit 2;
+    fi
+    tar xjf firefox-52.0.tar.bz2
+    byte_size=`stat --format=%s firefox/firefox`
+    if [[ "$byte_size" != "151792" ]]; then
+      echo "firefox bin was not the correct size"
+      exit 3;
+    fi
+    
