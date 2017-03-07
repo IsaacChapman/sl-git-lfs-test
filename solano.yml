@@ -1,4 +1,7 @@
 # Solano CI test repository for git lfs compatibility
+tool_config:
+  git:
+    version: '2.0.3'
 hooks:
   pre_setup: git lfs pull
 tests:
