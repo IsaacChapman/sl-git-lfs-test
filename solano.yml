@@ -1,6 +1,6 @@
 # Solano CI test repository for git lfs compatibility
 hooks:
-  pre_setup: git lfs checkout
+  pre_setup: git lfs pull
 tests:
   - |
     echo "Testing lfs file and size"
